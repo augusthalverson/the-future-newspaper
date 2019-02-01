@@ -17,6 +17,9 @@ var indexRoutes     = require("./routes/indexRoutes"),
 
 // Connect to DB
 mongoose.connect("mongodb://localhost/thefuture", {useNewUrlParser: true});
+// DotEnv
+const dotenv = require('dotenv');
+dotenv.config();
 // Use body-parser
 app.use(bodyParser.urlencoded({extended:true}));
 // Use express-sanitizer
