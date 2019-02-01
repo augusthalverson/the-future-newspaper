@@ -11,14 +11,14 @@ router.get("/", function(req, res){
         if (err) {
             console.log(err);
         } else {
-            res.render("index", {articles: allArticles});
+            res.render("articles/index", {articles: allArticles});
         }
     });
 });
 
 // NEW
 router.get("/new", isLoggedIn, function(req, res) {
-    res.render("new");
+    res.render("articles/new");
 });
 
 // CREATE
@@ -48,7 +48,7 @@ router.get("/:id", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("show", {article: articleFound, date: dateCreated});
+            res.render("articles/show", {article: articleFound, date: dateCreated});
         }
     })
 });
@@ -59,7 +59,7 @@ router.get("/:id/edit", function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render("edit", {article: articleFound});
+            res.render("articles/edit", {article: articleFound});
         }
     })
 });

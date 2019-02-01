@@ -21,20 +21,20 @@ router.get("/user/:id", function(req, res) {
 
 // LOGIN
 router.get("/login", function(req, res) {
-    res.render("login");
+    res.render("users/login");
 });
 
 // LOGIN LOGIC
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login"
+    failureRedirect: "users/login"
 }), function(req, res) {
     
 });
 
 // SIGN UP
 router.get("/signup", function(req, res) {
-    res.render("signup");
+    res.render("users/signup");
 });
 
 // SIGN UP LOGIC
@@ -44,7 +44,7 @@ router.post("/signup", function(req, res){
         if (err) {
             console.log("ERROR REGISTERING USER!");
             console.log(err);
-            res.redirect("/signup");
+            res.redirect("users/signup");
         } else {
             passport.authenticate("local")(req, res, function() {
             res.redirect("/articles");
