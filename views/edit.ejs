@@ -1,28 +1,52 @@
 <% include partials/header %>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=qfl8c1q0v2i0bi0p0nzwhazgwys66ro94n2kd7s6vka0e228"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "#tinymce",
+        theme: "modern",
+        
+        height: 400,
 
-<div class="container">
-    <h1>Edit <%= article.title %></h1>
-    <form action="/articles/<%= article._id %>?_method=PUT" method="POST">
+        plugins: "autolink anchor link preview code lists table hr wordcount",
+
+        toolbar: [
+            'undo redo | formatselect | bold italic underline strikethrough superscript subscript',
+            'bullist numlist | hr | link | table  | preview code'
+        ],
+        menubar: false,
+        branding: false,
+        
+    });
+</script>
+
+<div class="container my-5">
+    <h1>Edit Article</h1>
+    <form action="/articles" method="POST">
         <div class="form-group">
             <label for="articleTitle">Article Title</label>
-            <input id="articleTitle" class="form-control" type="text" name="article[title]" placeholder="Title" value="<%= article.title %>">
+            <input id="articleTitle" class="form-control" type="text" name="article[title]" placeholder="E.g. How to be like August" value="<%= article.title %>">
         </div>
         <div class="form-group">
             <label for="articleSubtitle">Article Subtitle</label>
-            <input id="articleSubtitle" class="form-control" type="text" name="article[subtitle]" placeholder="Subtitle" value="<%= article.subtitle %>">
+            <input id="articleSubtitle" class="form-control" type="text" name="article[subtitle]" placeholder="E.g. A comprehensive guide to becoming superior to the people around you" value="<%= article.subtitle %>">
         </div>
         <div class="form-group">
             <label for="articleImage">Image URL</label>
-            <input id="articleImage" class="form-control" type="text" name="article[image]" placeholder="Image URL"  value="<%= article.image %>">
+            <input id="articleImage" class="form-control" type="text" name="article[image]" placeholder="https://www.example.com/my-image.jpeg" value="<%= article.image %>">
         </div>
         <div class="form-group">
-            <label for="articleBody">Article Body</label>
-            <textarea id="articleBody" class="form-control" rows="10" name="article[body]" placeholder="Article"><%= article.body %></textarea>
+            <label for="tinymce">Article Body</label>
+            <textarea class="form-control" id="tinymce" name="article[body]"><%= article.body %></textarea>
         </div>
-            
-            <input type="submit" class="btn btn-primary btn-lg" value="Update Article">
-            <a href="/articles" class="btn btn-default btn-lg" value="Go Back">
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <input class="form-control" id="tags" name="article[tags]" placeholder="E.g. Lifestyle, Philosophy" value="<%= article.tags %>">
+        </div>
+
+        <input type="submit" class="btn btn-primary btn-lg mr-2" value="Update Article">
+        <a href="/articles">Go Back</a>
     </form>
 </div>
+
 
 <% include partials/footer %>
