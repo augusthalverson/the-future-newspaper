@@ -1,0 +1,28 @@
+<% include partials/header %>
+
+<div class="container my-5">
+    <h1>New Article</h1>
+    <form action="/articles" method="POST">
+        <div class="form-group">
+            <label for="articleTitle">Article Title</label>
+            <input id="articleTitle" class="form-control" type="text" name="article[title]" placeholder="Title">
+        </div>
+        <div class="form-group">
+            <label for="articleSubtitle">Article Subtitle</label>
+            <input id="articleSubtitle" class="form-control" type="text" name="article[subtitle]" placeholder="Subtitle">
+        </div>
+        <div class="form-group">
+            <label for="articleImage">Image URL</label>
+            <input id="articleImage" class="form-control" type="text" name="article[image]" placeholder="Image URL">
+        </div>
+        <div class="form-group">
+            <label for="articleBody">Article Body</label>
+            <textarea id="articleBody" class="form-control" rows="10" name="article[body]" placeholder="Article"></textarea>
+        </div>
+            
+            <input type="submit" class="btn btn-primary btn-lg" value="Publish Article">
+            <a href="/articles" class="btn btn-default btn-lg" value="Go Back">
+    </form>
+</div>
+
+<% include partials/footer %>

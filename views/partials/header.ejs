@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<hmtl>
+    <head>
+        <title>Home | the future</title>
+        <!--BOOTSTAP -->
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <!--MAIN.CSS-->
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <!--FONT AWESOME-->
+        <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <!--GOOGLE FONTS-->
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Merriweather:700|Open+Sans" rel="stylesheet">
+    </head>
+    <body>
+        
+        <div class="navbar navbar-light bg-light">
+            <span id="dateSpan" class="d-none d-md-inline text-muted px-3">date span</span>
+            <span id="weatherSpan">
+                <i class="fas"></i>
+                <span id="tempSpan" ></span>
+                <span id="weatherNameSpan"></span>
+            </span>
+            <span id="accountOptions" class="float-right">
+            <% if (!currentUser) { %>
+                <a id="loginButton" class="btn btn-light accountOption" href="/login"><i class="far fa-user"></i> Login</a>
+                <a id="signupButton" class="btn btn-dark accountOption ml-3" href="/signup"><i class="fas fa-user"></i> Become a writer</a>
+            <% } else { %>
+                <div class="dropdown">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Logged in as <strong><%= currentUser.firstName %></strong>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/user/<%= currentUser._id %>"><i class="fas fa-user"></i>  Account</a>
+                        <a class="dropdown-item" href="/articles/new"><i class="fas fa-i-cursor"></i>  New Article</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                    </div>
+                </div>
+            <% } %>
+            </span>
+        </div>
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light px-3">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/images/Logo@3x.png" height="40"></a>
+        
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gun Control</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Climage Change</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Money in Politics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">How Government Works</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>

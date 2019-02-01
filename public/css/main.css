@@ -1,0 +1,193 @@
+body {
+    background:#f8f9fa;
+}
+
+.navbar {
+    border-bottom: .5px solid lightgrey;
+}
+
+.accountOption {
+    color: black;
+    text-transform: uppercase;
+}
+
+#dateSpan {
+    text-transform: uppercase;
+}
+
+/* WEATHER */
+#tempSpan {
+    font-weight: bold;
+}
+
+#weatherNameSpan {
+    text-transform: uppercase;
+}
+
+#loggedInUser {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#signupButton {
+	color:white;
+}
+
+.dropdown-menu i {
+	width: 30px;
+	text-align: center;
+}
+
+.container {
+	font-family: Open Sans;
+}
+
+#article-card-container .card {
+	margin-top: 20px;
+}
+
+.article-card-container .card .article-card-author {
+	color: grey;
+}
+
+.article-card-container .card .article-card-author a {
+	color: black;
+	font-style: italic;
+	text-decoration: underline;
+	text-decoration-color: grey;
+}
+.section-header-container {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.section-header-container .section-title {
+	text-align: center;
+	font-family: Merriweather;
+	font-size: 30px;
+}
+
+/* ----- ARTICLE ----- */
+
+#article {
+	margin-top: 30px;
+}
+
+#article h1 {
+	font-family: Merriweather;
+	font-weight: 900;
+}
+
+#article #sub-header {
+	font-family: Merriweather;
+	font-style: italic;
+	margin-bottom: 20px;
+}
+
+#article #author-pane {
+	padding: 20px;
+	border-left: 3px solid black;
+	display: flex;
+	margin-bottom: 15px;
+}
+
+#article #article-date {
+	font-size: 10pt;
+}
+
+#article #author-image img {
+	width: 60px;
+}
+
+#article #author-name {
+	padding-left: 20px;
+	float:right;
+	height: 100%;
+	margin:auto 0;
+	font-family: Merriweather;
+	font-weight: 400;
+	font-style: italic;
+	color:black;
+}
+
+#article #author-name a {
+	color:black;
+	text-decoration: underline;
+	text-decoration-color: lightgrey;
+}
+
+#article #article-body {
+	margin-top: 30px;
+	/*text-indent: all;*/
+	line-height: 2;
+}
+
+.big-first-letter p:first-child::first-letter {
+	float: left;
+	font-family: Merriweather;
+	font-size: 75px;
+	line-height: 60px;
+	padding-top: 4px;
+	padding-right: 8px;
+	padding-left: 3px;
+}
+
+/* ----- Images -----*/
+
+.image-full-width {
+	padding: 20px;
+}
+
+.image-caption {
+	margin-top: 5px;
+	font-family: Merriweather;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.image-credits {
+	width: auto;
+	text-align: right;
+	font-family: Merriweather;
+	font-size: 8pt;
+	font-weight: 400;
+	font-style: italic;
+	color: grey;
+}
+
+.image-credits a {
+	color:black;
+	text-decoration: underline;
+	text-decoration-color: lightgrey;
+}
+
+/* FOOTER */
+
+footer {
+    color: #515151;
+    background: #303030;
+}
+
+/* ACCOUNT */
+#profile-picture {
+	width: 75px;
+}
+
+.tab-pane {
+	padding: 20px 0 0 20px;
+}
+
+
+.account-info-bar {
+	padding:20px 0 20px 0;
+	width: 100%;
+	border-bottom: 1px solid lightgrey;
+}
+
+.account-info-bar:first-child {
+	border-top: 1px solid lightgrey;
+}
+
+.account-info-bar:hover {
+	background:lightgrey;
+}

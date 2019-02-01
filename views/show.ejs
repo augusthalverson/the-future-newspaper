@@ -1,0 +1,68 @@
+<% include partials/header %>
+
+<div id="article">
+	
+	<div class="container">
+		<!--<img class="img-fluid" src="<%= article.image %>">-->
+		<div class="image-full-width">
+			<img src="<%= article.image %>" class="img-fluid" alt="Responsive image">
+			<div class="image-credits">
+				Photo curtesy of <a href="#">Johnny Appleseed</a>
+			</div>
+		</div>
+		<h1><%= article.title %></h1>
+		<div id="sub-header"><%= article.subtitle %></div>
+		
+		<div id="article-date"><em><%= date %></em></div>
+		<hr>
+		<div id="author-pane">
+			<div id="author-image">
+				<img src="/images/placeholders/profile-picture-placeholder.png">
+			</div>
+			<div id="author-name">By <a href="#adrian"><%= article.author.name %></a></div>
+		</div>
+		
+		<div id="article-body" class="big-first-letter">
+
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p> 
+			
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p> 
+		</div>
+		<form action="/articles/<%= article._id %>?_method=DELETE" method="POST">
+			<a href="/articles/<%= article._id %>/edit" class="btn btn-dark"><i class="fas fa-pencil-alt"></i> EDIT</a>
+			<button class="btn btn-danger"><i class="fas fa-trash"></i> DELETE</button>
+		</form>
+		
+	</div>
+</div>
+<% include partials/footer %>
