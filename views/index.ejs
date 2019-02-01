@@ -9,8 +9,8 @@
             <div class="card-body">
                 <h5 class="card-title"><a href="/articles/<%= article._id %>"><strong><%= article.title %></strong></a></h5>
                 <h6 class="card-subtitle text-muted"><em><%= article.subtitle %></em></h6>
-                <p class="card-text"><%= article.body.substring(0,100)%>...</p>
-                <h6 class="card-subtitle mb-2">By <%= article.author %></h6>
+                <p class="card-text"><%- article.body.substring(0,100)%>...</p>
+                <h6 class="card-subtitle mb-2">By <%= article.author.name %></h6>
                 <a href="/articles/<%= article._id %>">Read More...</a>
                 
             </div>
