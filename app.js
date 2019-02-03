@@ -14,6 +14,8 @@ var indexRoutes     = require("./routes/indexRoutes"),
     userRoutes      = require("./routes/userRoutes"),
     articleRoutes   = require("./routes/articleRoutes");
 
+var seedDB          = require("./seeds");
+
 
 // Connect to DB
 mongoose.connect("mongodb://localhost/thefuture", {useNewUrlParser: true});
@@ -36,7 +38,7 @@ app.use(require("express-session")({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//send with every user
+//send with every req
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
     next();
@@ -49,6 +51,8 @@ app.set("view engine", "ejs");
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// seedDB();
 
 // ROUTE PREFIXES
 app.use("/articles", articleRoutes);
