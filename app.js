@@ -1,5 +1,6 @@
 var express         = require("express"),
     app             = express(),
+    favicon         = require("express-favicon"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
@@ -22,6 +23,8 @@ mongoose.connect("mongodb://localhost/thefuture", {useNewUrlParser: true});
 // DotEnv
 const dotenv = require('dotenv');
 dotenv.config();
+// Configure favicon
+app.use(favicon(__dirname + "/public/favicon.png"));
 // Use body-parser
 app.use(bodyParser.urlencoded({extended:true}));
 // Use express-sanitizer
