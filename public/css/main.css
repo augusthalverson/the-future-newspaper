@@ -69,6 +69,12 @@ body {
 
 /* ----- ARTICLE ----- */
 
+.articleTitle a {
+	font-family: Merriweather;
+	font-weight: 900;
+	color: black;
+}
+
 #article {
 	margin-top: 30px;
 }
