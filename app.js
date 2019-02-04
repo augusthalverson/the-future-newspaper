@@ -17,12 +17,12 @@ var indexRoutes     = require("./routes/indexRoutes"),
 
 var seedDB          = require("./seeds");
 
-
+console.log(process.env.DATABASEURL);
+console.log(process.env);
 // Connect to DB
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser:true});
 // DotEnv
-const dotenv = require('dotenv');
-dotenv.config();
+require('dotenv').config()
 // Configure favicon
 app.use(favicon(__dirname + "/public/favicon.png"));
 // Use body-parser
