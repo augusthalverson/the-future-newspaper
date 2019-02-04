@@ -1,0 +1,85 @@
+<% include ../partials/header %>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="<%= articles[0].image %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= articles[0].title %></h5>
+                    <p class="cart-text"><%= articles[0].subtitle %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-12 row py-4">
+                    <div class="col-4"><hr></div>
+                    <div class="col-4 text-center"><h3>What's Hot</h3></div>
+                    <div class="col-4"><hr></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="<%= articles[2].image %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= articles[1].title %></h5>
+                            <p class="card-text"><%= articles[1].subtitle %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="<%= articles[4].image %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= articles[4].title %></h5>
+                            <p class="card-text"><%= articles[4].subtitle %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <!-- 2nd ROW -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <img src="<%= articles[5].image %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= articles[5].title %></h5>
+                    <p class="card-body"><%= articles[5].subtitle %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="<%= articles[6].image %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= articles[6].title %></h5>
+                    <p class="card-body"><%= articles[6].subtitle %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="<%= articles[7].image %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= articles[7].title %></h5>
+                    <p class="card-body"><%= articles[7].subtitle %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="<%= articles[8].image %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= articles[8].title %></h5>
+                    <p class="card-body"><%= articles[8].subtitle %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

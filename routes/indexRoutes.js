@@ -1,12 +1,16 @@
 var express     = require("express"),
-    router      = express.Router();
+    router      = express.Router(),
+    Article     = require("../models/article");
 
 // =======================
 //          HOME
 // =======================
 
 router.get("/", function(req, res){
-    res.redirect("/articles");
+    Article.find({}, function(err, foundArticles){
+        res.render("homeLayouts/homepage-standard", {articles: foundArticles});
+    })
+    
 });
 
 
