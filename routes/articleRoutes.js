@@ -9,7 +9,7 @@ var bodyParser = require("body-parser");
 router.get("/", function(req, res){
     Article.find({}, function(err, allArticles){
         if (err) {
-            console.log(err);
+            req.flash("error", err.message);
         } else {
             res.render("articles/index", {articles: allArticles});
         }
@@ -34,8 +34,9 @@ router.post("/", isLoggedIn, function(req, res){
     
     Article.create(newArticle, function(err, articleCreated){
         if (err) {
-            console.log(err);
+            req.flash("error", err.message);
         } else {
+            req.flash("success", "Article Posted!");
             res.redirect("/articles/" + articleCreated._id)
         }
     });
@@ -46,7 +47,7 @@ router.get("/:id", function(req, res) {
     Article.findById(req.params.id, function(err, articleFound){
         var dateCreated = formatDate(articleFound.created);
         if (err) {
-            console.log(err);
+            req.flash("error", err.message);
         } else {
             res.render("articles/show", {article: articleFound, date: dateCreated});
         }
@@ -57,7 +58,7 @@ router.get("/:id", function(req, res) {
 router.get("/:id/edit", function(req, res) {
     Article.findById(req.params.id, function(err, articleFound){
         if (err) {
-            console.log(err);
+            req.flash("error", err.message);
         } else {
             res.render("articles/edit", {article: articleFound});
         }
@@ -69,8 +70,9 @@ router.put("/:id", function(req, res){
     req.body.article.body = req.sanitize(req.body.article.body);
     Article.findByIdAndUpdate(req.params.id, req.body.article, function(err, articleUpdated){
         if (err) {
-            console.log(err);
+            req.flash("error", err.message);
         } else {
+            req.flash("success", "Article updated successfully")
             res.redirect("/articles/" + req.params.id);
         }
     });
@@ -80,9 +82,9 @@ router.put("/:id", function(req, res){
 router.delete("/:id", function(req, res) {
     Article.findByIdAndDelete(req.params.id, function(err, articleCreated){
         if (err){
-            console.log(err);
+            req.flash("error", err.message);
         } else {
-            console.log("article deleted");
+            req.flash("success", "Article successfully deleted.")
             res.redirect("/articles");
         }
     })

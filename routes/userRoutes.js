@@ -27,9 +27,9 @@ router.get("/login", function(req, res) {
 // LOGIN LOGIC
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "users/login"
+    failureRedirect: "/login"
 }), function(req, res) {
-    
+
 });
 
 // SIGN UP
@@ -42,11 +42,11 @@ router.post("/signup", function(req, res){
     console.log(req.body);
     User.register(new User({username:req.body.username, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email}), req.body.password, function(err, user){
         if (err) {
-            console.log("ERROR REGISTERING USER!");
-            console.log(err);
+            req.flash("error", err.message);
             res.redirect("users/signup");
         } else {
             passport.authenticate("local")(req, res, function() {
+            req.flash("success", "Hello, " + req.user.firstName);
             res.redirect("/articles");
         });
         }
@@ -56,6 +56,7 @@ router.post("/signup", function(req, res){
 // LOGOUT
 router.get("/logout", function(req, res) {
     req.logout();
+    req.flash("error", "You are now logged out!");
     res.redirect("/");
 })
 

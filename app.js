@@ -1,13 +1,14 @@
 var express         = require("express"),
     app             = express(),
     favicon         = require("express-favicon"),
+    flash           = require("connect-flash"),
     bodyParser      = require("body-parser"),
     mongoose        = require("mongoose"),
     passport        = require("passport"),
     methodOverride  = require("method-override"),
     expressSanitizer= require("express-sanitizer"),
     LocalStrategy   = require("passport-local");
-    
+
 var User            = require("./models/user"),
     Article         = require("./models/article")
     
@@ -40,9 +41,13 @@ app.use(require("express-session")({
 // Use Passport
 app.use(passport.initialize());
 app.use(passport.session());
+// Setup Flash
+app.use(flash());
 
 //send with every req
 app.use(function(req, res, next){
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     res.locals.currentUser = req.user;
     next();
 });
