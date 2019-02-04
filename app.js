@@ -19,7 +19,7 @@ var seedDB          = require("./seeds");
 
 
 // Connect to DB
-mongoose.connect("mongodb://localhost/thefuture", {useNewUrlParser: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
 // DotEnv
 const dotenv = require('dotenv');
 dotenv.config();
