@@ -18,8 +18,6 @@ var indexRoutes     = require("./routes/indexRoutes"),
 
 var seedDB          = require("./seeds");
 
-console.log(process.env.DATABASEURL);
-console.log(process.env);
 // Connect to DB
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser:true});
 // DotEnv

@@ -197,3 +197,9 @@ footer {
 .account-info-bar:hover {
 	background:lightgrey;
 }
+
+img.thumbnail-left {
+	object-fit: cover;
+  	width:100px;
+  	height:100px;
+}

@@ -3,17 +3,23 @@
 <div class="container mt-5">
     <h1>Index page (DEVELOPMENT ONLY)</h1>
     <% articles.forEach(function(article){ %>
-        <div class="card mb-5">
-            <a href="/articles/<%= article._id %>"><img class="card-img-top" src="<%= article.image %>"></a>
-            <div class="card-body">
-                <h5 class="card-title articleTitle"><a href="/articles/<%= article._id %>"><%= article.title %></a></h5>
-                <h6 class="card-subtitle text-muted"><em><%= article.subtitle %></em></h6>
-                <p class="card-text"><%- article.body.substring(0,100)%>...</p>
-                <h6 class="card-subtitle mb-2">By <%= article.author.name %></h6>
-                <a href="/articles/<%= article._id %>">Continue reading...</a>
-                
+        <div class="row">
+            <div class="col-md-2 text-center">
+                <img class="thumbnail-left" src="<%= article.image %>" height="100px">
+            </div>
+            <div class="col-md-8">
+                <h5><%= article.title %></h5>
+                <p class="text-muted m-0"><em><%= article.subtitle %></em></p>
+                <p class="m-0"><%- article.body.substring(0,70) %>...</p>
+            </div>
+            <div class="col-md-2">
+                <form action="/articles/<%= article._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></button>
+                    <a href="/articles/<%= article._id %>/edit" class="btn btn-xs btn-success"><i class="fas fa-pen"></i></a>
+                </form>
             </div>
         </div>
+        <hr>
     <% }); %>
 </div>
 

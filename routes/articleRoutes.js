@@ -25,13 +25,18 @@ router.get("/new", isLoggedIn, function(req, res) {
 router.post("/", isLoggedIn, function(req, res){
     var articleSubmission = req.body.article;
     
+    var tags = articleSubmission.tags
+    console.log(articleSubmission.tags);
+
     var articleAuthor = {
         id: req.user._id,
         name: req.user.firstName + ' ' + req.user.lastName
     };
+
+
     
-    var newArticle = new Article({title: articleSubmission.title, subtitle: articleSubmission.subtitle, author: articleAuthor, image: articleSubmission.image, body: articleSubmission.body})
-    
+    var newArticle = new Article({title: articleSubmission.title, subtitle: articleSubmission.subtitle, author: articleAuthor, image: articleSubmission.image, body: articleSubmission.body, tags: articleSubmission.tags})
+    console.log(newArticle);
     Article.create(newArticle, function(err, articleCreated){
         if (err) {
             req.flash("error", err.message);
@@ -122,6 +127,14 @@ function formatDate(date) {
     var currentYear = date.getFullYear();
 
     return currentDay + ', ' + currentMonth + ' ' + currentDate + ', ' + currentYear;
+}
+
+function extractTags(string) {
+    var arr = string.split(",");
+    arr.forEach(function(ell, index){
+        this[index] = ell.trim();
+    }, arr);
+    return arr;
 }
 
 module.exports = router;
