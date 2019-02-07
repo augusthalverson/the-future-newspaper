@@ -169,7 +169,7 @@ body {
 
 /* FOOTER */
 
-footer {
+footer, footer a {
     color: #515151;
     background: #303030;
 }

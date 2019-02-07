@@ -8,17 +8,24 @@ var bodyParser = require("body-parser");
 // INDEX
 router.get("/", function(req, res){
     Article.find({}, function(err, allArticles){
+        var currentPage;
+        if (!req.query.page || req.query.page === "") {
+            currentPage = 0;
+        } else {
+            currentPage = req.query.page - 1;
+        }
+        console.log();
         if (err) {
             req.flash("error", err.message);
         } else {
-            res.render("articles/index", {articles: allArticles});
+            res.render("articles/index", {articles: allArticles, pageTitle: "All Articles", currentPage});
         }
     });
 });
 
 // NEW
 router.get("/new", isLoggedIn, function(req, res) {
-    res.render("articles/new");
+    res.render("articles/new", {pageTitle: "New Article"});
 });
 
 // CREATE
@@ -54,7 +61,7 @@ router.get("/:id", function(req, res) {
         if (err) {
             req.flash("error", err.message);
         } else {
-            res.render("articles/show", {article: articleFound, date: dateCreated});
+            res.render("articles/show", {article: articleFound, date: dateCreated, pageTitle: articleFound.title});
         }
     })
 });
@@ -65,7 +72,7 @@ router.get("/:id/edit", function(req, res) {
         if (err) {
             req.flash("error", err.message);
         } else {
-            res.render("articles/edit", {article: articleFound});
+            res.render("articles/edit", {article: articleFound, pageTitle: "Edit"});
         }
     })
 });

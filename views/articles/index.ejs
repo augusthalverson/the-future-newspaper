@@ -2,25 +2,60 @@
 
 <div class="container mt-5">
     <h1>Index page (DEVELOPMENT ONLY)</h1>
-    <% articles.forEach(function(article){ %>
+    <div>
+        <p><%= articles.length %> Articles</p>
+        <div>
+            <label for="perPageSelect">Per page: </label>
+            <select name="perPage" id="perPageSelect">
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    </div>
+    <% var perPage = 10 %>
+    <% for (var i = currentPage * perPage; i < (currentPage * perPage) + perPage && i < articles.length; i++) {%>
         <div class="row">
             <div class="col-md-2 text-center">
-                <img class="thumbnail-left" src="<%= article.image %>" height="100px">
+                <a href="/articles/<%= articles[i]._id %>"><img class="thumbnail-left" src="<%= articles[i].image %>" height="100px"></a>
             </div>
             <div class="col-md-8">
-                <h5><%= article.title %></h5>
-                <p class="text-muted m-0"><em><%= article.subtitle %></em></p>
-                <p class="m-0"><%- article.body.substring(0,70) %>...</p>
+                <a class="text-dark" href="/articles/<%= articles[i]._id %>"><h5><%= articles[i].title %></h5></a>
+                <p class="text-muted m-0"><em><%= articles[i].subtitle %></em></p>
+                <p class="m-0"><%- articles[i].body.substring(0,70) %>...</p>
             </div>
             <div class="col-md-2">
-                <form action="/articles/<%= article._id %>?_method=DELETE" method="POST">
+                <form action="/articles/<%= articles[i]._id %>?_method=DELETE" method="POST">
                     <button class="btn btn-xs btn-danger"><i class="fas fa-trash"></i></button>
-                    <a href="/articles/<%= article._id %>/edit" class="btn btn-xs btn-success"><i class="fas fa-pen"></i></a>
+                    <a href="/articles/<%= articles[i]._id %>/edit" class="btn btn-xs btn-success"><i class="fas fa-pen"></i></a>
                 </form>
             </div>
         </div>
         <hr>
-    <% }); %>
+    <% }; %>
+
+    <div class="articlePagination">
+        <ul class="pagination">
+            <% if (currentPage === 0 ) { %>
+                <li class="page-item disabled"><a class="page-link" href="/articles?page=<%= currentPage %>">&laquo</a></li>
+            <% } else { %>
+                <li class="page-item"><a class="page-link" href="/articles?page=<%= currentPage %>">&laquo</a></li>
+            <% } %>
+            
+            <% for (var i = 0; i < articles.length/perPage; i++) { %>
+                <% if (i === currentPage) { %>
+                    <li class="page-item active"><a class="page-link" href="/articles?page=<%= i+1 %>"><%= i+1 %></a></li>
+                <% } else {%>
+                    <li class="page-item"><a class="page-link" href="/articles?page=<%= i+1 %>"><%= i+1 %></a></li>
+                <% } %>
+            <% } %>
+
+            <% if (articles.length/perPage - currentPage < 1) { %>
+                <li class="page-item disabled"><a class="page-link" href="/articles?page=<%= currentPage+2 %>">&raquo</a></li>
+            <% } else { %>
+                <li class="page-item"><a class="page-link" href="/articles?page=<%= currentPage+2 %>">&raquo</a></li>
+            <% } %>
+        </ul>
+    </div>
 </div>
 
 <% include ../partials/footer %>

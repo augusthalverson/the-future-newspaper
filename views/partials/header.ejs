@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <hmtl>
     <head>
-        <title>Home | the future</title>
+        <title><%= pageTitle %> | the future</title>
         <!--BOOTSTAP -->
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <!--MAIN.CSS-->
@@ -25,8 +25,8 @@
             </span>
             <span id="accountOptions" class="float-right">
             <% if (!currentUser) { %>
-                <a id="loginButton" class="btn btn-light accountOption" href="/login"><i class="far fa-user"></i> Login</a>
-                <a id="signupButton" class="btn btn-dark accountOption ml-3" href="/signup"><i class="fas fa-user"></i> Become a writer</a>
+                <a id="loginButton" class="btn btn-light accountOption" href="/login"><i class="far fa-user mr-2"></i>Login</a>
+                <a id="signupButton" class="btn btn-dark accountOption ml-3" href="/signup"><i class="fas fa-pencil-alt mr-2"></i>Become a writer</a>
             <% } else { %>
                 <div class="dropdown">
                     <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +71,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">How Government Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/articles"><strong>ALL ARTICLES</strong></a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">

@@ -21,7 +21,7 @@ router.get("/user/:id", function(req, res) {
 
 // LOGIN
 router.get("/login", function(req, res) {
-    res.render("users/login");
+    res.render("users/login", {pageTitle: "Login"});
 });
 
 // LOGIN LOGIC
@@ -34,7 +34,7 @@ router.post("/login", passport.authenticate("local", {
 
 // SIGN UP
 router.get("/signup", function(req, res) {
-    res.render("users/signup");
+    res.render("users/signup", {pageTitle: "Sign Up"});
 });
 
 // SIGN UP LOGIC

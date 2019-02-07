@@ -8,7 +8,7 @@ var express     = require("express"),
 
 router.get("/", function(req, res){
     Article.find({}, function(err, foundArticles){
-        res.render("homeLayouts/homepage-standard", {articles: foundArticles});
+        res.render("homeLayouts/homepage-standard", {articles: foundArticles, pageTitle: "Home"});
     })
     
 });
